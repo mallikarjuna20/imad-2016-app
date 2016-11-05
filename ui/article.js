@@ -30,6 +30,7 @@ function loadCommentForm () {
         };
         
         // Make the request
+        var currentArticleTitle=articlename;
         var comment = document.getElementById('comment_text').value;
         request.open('POST', '/submit-comment/' +currentArticleTitle, true);
         request.setRequestHeader('Content-Type', 'application/json');
@@ -87,7 +88,7 @@ function loadComments () {
         }
     };
     
-    request.open('GET', '/get-comments/' +currentArticleTitle, true);
+    request.open('GET', '/get-comments/' + currentArticleTitle, true);
     request.send(null);
 }
 
