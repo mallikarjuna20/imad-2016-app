@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<link rel="shortcut icon" href="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQF22kGtWWV7YP3HKGrwkxEhYpbm2DAnA5YKMMoKKqxQ1X5VhYQKnaA5f0">
+<script src='https://code.responsivevoice.org/responsivevoice.src.js'></script>
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+</head>
+
+<body>
+
+<div  align="center">
+
+<select id="voiceselection"></select>
+
+
+</br></br>
+<div>
+<button class="w3-btn w3-pink w3-ripple  w3-round" onclick="responsiveVoice.speak($('#text').val(),$('#voiceselection').val());" >🔊 <i>Play</i></button>
+
+<audio loop="false" width="0" height="0" id="sound" src="http://responsivevoice.org/wp-content/uploads/2015/06/Peppy-The-Firing-Squad_YMXB-160.mp3" type="audio/mp3" ></audio>
+
+
+<button class="w3-btn w3-pink w3-ripple  w3-round" onclick='pause()'><i>Pause</i></button>
+<button class="w3-btn w3-pink w3-ripple  w3-round" onclick='resume()'><i>Resume</i></button>
+
+
+<button class="w3-btn w3-pink w3-ripple  w3-round" onclick='stop()'><i>Stop</i></button>
+</br></br>
+
+<button  class="w3-btn w3-pink w3-ripple  w3-round"  class="butt js--triggerAnimation" onclick="playwbg()" type="button"   value="Play">🔊<i> Play With Music</i></button>
+</br></br>
+
+<button class="w3-btn w3-pink w3-ripple  w3-round" type="button" onclick="bgstop()" value="Stop Music"/><i>Stop Music</i></button>
+
+<button class="w3-btn w3-pink w3-ripple  w3-round" type="button" onclick="playbg()" value="Play Music"><i>Play Music</i></button>
+
+</br></br>
+<textarea id="text" rows="15" cols="75"></textarea>
+</div>
+
+
+<script>
+
+var t=0;
+
+
+
+
+
+
+
+//widget
+
+var voicelist = responsiveVoice.getVoices();
+        var vselect = $("#voiceselection");
+        $.each(voicelist, function() {
+                vselect.append($("<option />").val(this.name).text(this.name));});
+
+//play with background
+
+function playwbg()
+{
+t=1
+responsiveVoice.speak($('#text').val(),$('#voiceselection').val()); document.getElementById('sound').play();
+}
+
+function playbg()
+{
+t=1
+document.getElementById('sound').play();
+}
+
+//bgfun
+
+function bgstop()
+{
+document.getElementById("sound").pause()
+t=0;
+}
+
+//stop
+
+function stop()
+{
+responsiveVoice.cancel();
+bgstop();
+}
+
+//pause
+
+function pause()
+{
+responsiveVoice.pause();
+document.getElementById("sound").pause()
+}
+
+//resume
+
+function resume()
+{
+responsiveVoice.resume();
+if(t==1)
+document.getElementById("sound").play();
+}
+
+</script>
+
+
+
+</body>
+</html>
+
