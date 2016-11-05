@@ -31,6 +31,7 @@ function createTemplate (data) {
     var htmlTemplate = `
     <html>
       <head>
+              <link rel="shortcut icon" href="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQF22kGtWWV7YP3HKGrwkxEhYpbm2DAnA5YKMMoKKqxQ1X5VhYQKnaA5f0">
           <title>
               ${title}
           </title>
