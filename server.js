@@ -11,7 +11,7 @@ var config = {
     database: 'mallikarjuna20',
     host: 'db.imad.hasura-app.io',
     port: '5432',
-    password: db-mallikarjuna20-66236
+    password: process.env.DB_PASSWORD
 };
 
 var app = express();
