@@ -9,13 +9,13 @@ function loadLoginForm () {
         `;
     document.getElementById('login_area').innerHTML = loginHtml;
     
-    // Submit username/password to login
+    
     var submit = document.getElementById('login_btn');
     submit.onclick = function () {
-        // Create a request object
+       
         var request = new XMLHttpRequest();
         
-        // Capture the response and store it in a variable
+       
         request.onreadystatechange = function () {
           if (request.readyState === XMLHttpRequest.DONE) {
               // Take some action
@@ -32,10 +32,10 @@ function loadLoginForm () {
               }
               loadLogin();
           }  
-          // Not done yet
+        
         };
         
-        // Make the request
+      
         var username = document.getElementById('username').value;
         var password = document.getElementById('password').value;
         console.log(username);
@@ -49,10 +49,10 @@ function loadLoginForm () {
     
     var register = document.getElementById('register_btn');
     register.onclick = function () {
-        // Create a request object
+        
         var request = new XMLHttpRequest();
         
-        // Capture the response and store it in a variable
+    
         request.onreadystatechange = function () {
           if (request.readyState === XMLHttpRequest.DONE) {
               // Take some action
@@ -66,7 +66,7 @@ function loadLoginForm () {
           }
         };
         
-        // Make the request
+        
         var username = document.getElementById('username').value;
         var password = document.getElementById('password').value;
         console.log(username);
@@ -88,7 +88,7 @@ function loadLoggedInUser (username) {
 }
 
 function loadLogin () {
-    // Check if the user is already logged in
+   
     var request = new XMLHttpRequest();
     request.onreadystatechange = function () {
         if (request.readyState === XMLHttpRequest.DONE) {
@@ -105,7 +105,7 @@ function loadLogin () {
 }
 
 function loadArticles () {
-        // Check if the user is already logged in
+       
     var request = new XMLHttpRequest();
     request.onreadystatechange = function () {
         if (request.readyState === XMLHttpRequest.DONE) {
