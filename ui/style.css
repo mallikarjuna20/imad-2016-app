@@ -1,6 +1,9 @@
 body {
     font-family: sans-serif;
     margin-top: 60px;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
 }
 
 .center {
