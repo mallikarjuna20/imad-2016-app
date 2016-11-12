@@ -86,9 +86,7 @@ app.get('/hash/:input', function(req, res) {
 });
 
 app.post('/create-user', function (req, res) {
-   // username, password
-   // {"username": "tanmai", "password": "password"}
-   // JSON
+  
    var username = req.body.username;
    var password = req.body.password;
    var salt = crypto.randomBytes(128).toString('hex');
@@ -116,14 +114,12 @@ app.post('/login', function (req, res) {
               // Match the password
               var dbString = result.rows[0].password;
               var salt = dbString.split('$')[2];
-              var hashedPassword = hash(password, salt); // Creating a hash based on the password submitted and the original salt
+              var hashedPassword = hash(password, salt); 
               if (hashedPassword === dbString) {
                 
-                // Set the session
+               
                 req.session.auth = {userId: result.rows[0].id};
-                // set cookie with a session id
-                // internally, on the server side, it maps the session id to an object
-                // { auth: {userId }}
+              
                 
                 res.send('credentials correct!');
                 
@@ -233,7 +229,7 @@ app.get('/ui/:fileName', function (req, res) {
 });
 
 
-var port = 8080; // Use 8080 for local development because you might already have apache running on 80
+var port = 8080; 
 app.listen(8080, function () {
   console.log(`IMAD course app listening on port ${port}!`);
 });
