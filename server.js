@@ -154,8 +154,7 @@ app.get('/logout', function (req, res) {
 var pool = new Pool(config);
 
 app.get('/get-articles', function (req, res) {
-   // make a select request
-   // return a response with the results
+   
    pool.query('SELECT * FROM article ORDER BY date DESC', function (err, result) {
       if (err) {
           res.status(500).send(err.toString());
@@ -166,8 +165,7 @@ app.get('/get-articles', function (req, res) {
 });
 
 app.get('/get-comments/:articleName', function (req, res) {
-   // make a select request
-   // return a response with the results
+  
    pool.query('SELECT comment.*, "user".username FROM article, comment, "user" WHERE article.title = $1 AND article.id = comment.article_id AND comment.user_id = "user".id ORDER BY comment.timestamp DESC', [req.params.articleName], function (err, result) {
       if (err) {
           res.status(500).send(err.toString());
@@ -178,9 +176,9 @@ app.get('/get-comments/:articleName', function (req, res) {
 });
 
 app.post('/submit-comment/:articleName', function (req, res) {
-   // Check if the user is logged in
+  
     if (req.session && req.session.auth && req.session.auth.userId) {
-        // First check if the article exists and get the article-id
+
         pool.query('SELECT * from article where title = $1', [req.params.articleName], function (err, result) {
             if (err) {
                 res.status(500).send(err.toString());
@@ -189,7 +187,7 @@ app.post('/submit-comment/:articleName', function (req, res) {
                     res.status(400).send('Article not found');
                 } else {
                     var articleId = result.rows[0].id;
-                    // Now insert the right comment for this article
+                    
                     pool.query(
                         "INSERT INTO comment (comment, article_id, user_id) VALUES ($1, $2, $3)",
                         [req.body.comment, articleId, req.session.auth.userId],
